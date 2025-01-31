@@ -1,0 +1,165 @@
+// body{
+//     display:flex;
+//     justify-content: center;
+//     width: 100vw;
+//     height: 100vh;
+//     padding:0;
+//     margin:0;
+// }
+.top-left {
+  position: absolute;
+  top: -8px;
+  left: 8px;
+}
+
+.bottom-left {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+}
+
+.avatar {
+  background-image: url("../images/placeholder.png");
+  background-color: #cccccc;
+  height: 500px;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  .socials-wrapper{
+    display: flex;
+  }
+  .socials {
+    width: 50px;
+    transition: all 150ms ease;
+    &:hover{
+      width: 55px;
+    }
+  }
+}
+
+@import url("https://fonts.googleapis.com/css?family=Hind:300,400&display=swap");
+
+$bg: #fff;
+$text: #7288a2;
+$gray: #4d5974;
+$lightgray: #e5e5e5;
+$black: #000000;
+
+* {
+  box-sizing: border-box;
+  &::before,
+  &::after {
+    box-sizing: border-box;
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Hind", sans-serif;
+  background: $bg;
+  color: $gray;
+  display: flex;
+  min-height: 100vh;
+}
+
+.accordion {
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+  .accordion-item {
+    transition: transform 100ms ease;
+    border-bottom: 1px solid $lightgray;
+    &:hover {
+      border-bottom: 1px solid $black;
+      transform: scale(1.01);
+    }
+    &:has(button[aria-expanded="true"]){
+      border-bottom: 1px solid $black;
+      transform: scale(1.01);
+    }
+    button {
+      transition: color 200ms linear;
+    }
+    button[aria-expanded="false"] {
+      border-bottom: 0px solid $black;
+      transition: border-bottom 0s linear 200ms;
+    }
+  }
+  button {
+    position: relative;
+    display: block;
+    text-align: left;
+    width: 100%;
+    padding: 1em 0;
+    color: $text;
+    font-size: 1.15rem;
+    font-weight: 400;
+    border: none;
+    background: none;
+    outline: none;
+    &:hover,
+    &:active {
+      cursor: pointer;
+       color: $black;
+      .icon{
+        fill: $black;
+      }
+      &::after {
+        cursor: pointer;
+      }
+    }
+    .accordion-title {
+      padding: 1em 1.5em 1em 0;
+    }
+    .icon {
+      display: inline-block;
+      position: absolute;
+      top: 22px;
+      right: 10px;
+      width: 15px;
+      height: 15px;
+      fill: $text;
+      transition: all 200ms ease;
+    }
+  }
+  button[aria-expanded="true"] {
+    color: $black;
+    border-bottom: 1px solid $black;
+    transition: all 200ms ease;
+    transition: border-bottom 0s;
+    .icon {
+      transform: rotate(45deg);
+      transition: all 200ms ease;
+      fill: $black
+    }
+    + .accordion-content {
+      opacity: 1;
+      max-height: 9em;
+      transition: all 200ms ease;
+      will-change: opacity, max-height;
+    }
+  }
+
+  .accordion-content {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition:
+      opacity 200ms ease,
+      max-height 200ms ease;
+    will-change: opacity, max-height;
+    p {
+      font-size: 1rem;
+      font-weight: 300;
+      margin: 2em 0;
+    }
+  }
+}
+
+main {
+  margin-left: auto;
+  margin-right: auto;
+}
