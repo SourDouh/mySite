@@ -1,4 +1,10 @@
 @import url("https://fonts.googleapis.com/css?family=Hind:300,400&display=swap");
+main {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100vw;
+}
+
 .top-left {
   position: absolute;
   top: -8px;
@@ -124,24 +130,64 @@ body {
   opacity: 1;
   max-height: 9em;
   transition: all 200ms ease;
-  will-change: opacity, max-height;
 }
 .accordion .accordion-content {
   opacity: 0;
   max-height: 0;
   overflow: hidden;
   transition: opacity 200ms ease, max-height 200ms ease;
-  will-change: opacity, max-height;
 }
 .accordion .accordion-content p {
   font-size: 1rem;
   font-weight: 300;
   margin: 2em 0;
 }
+.accordion .accordion-content .image-grid {
+  margin: 8px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  grid-auto-rows: 150px;
+  grid-gap: 15px;
+  grid-auto-flow: dense;
+  overflow: auto;
+  /*make bIG*/
+}
+.accordion .accordion-content .image-grid * {
+  box-sizing: border-box;
+}
+.accordion .accordion-content .image-grid > div {
+  position: relative;
+  padding: 0;
+  overflow: hidden;
+  transition: transform 200ms ease-in-out;
+}
+.accordion .accordion-content .image-grid > div:hover, .accordion .accordion-content .image-grid > div:hover img {
+  transform: scale(1.05);
+}
+.accordion .accordion-content .image-grid > div img {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  overflow: hidden;
+  transition: transform 200ms ease-in-out;
+}
+.accordion .accordion-content .image-grid .vertical {
+  grid-row: span 2;
+}
+.accordion .accordion-content .image-grid .horizontal {
+  grid-column: span 2;
+}
+.accordion .accordion-content .image-grid .big {
+  grid-row: span 2;
+  grid-column: span 2;
+}
 
 main {
   margin-left: auto;
   margin-right: auto;
+  max-width: 100vw;
 }
 
 /*# sourceMappingURL=style.css.map */
